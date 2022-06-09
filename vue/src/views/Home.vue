@@ -16,6 +16,7 @@
                     <div>
                         <label for="base-url" class="sr-only">Base Url</label>
                         <input
+                            v-model="url.baseUrl"
                             id="base-url"
                             name="base-url"
                             type="url"
@@ -28,6 +29,7 @@
                     <div>
                         <label for="short-cut" class="sr-only">Shortcut</label>
                         <input
+                            v-model="url.shortCutUrl"
                             id="short-cut"
                             name="short-cut"
                             type="text"
@@ -52,4 +54,21 @@
     </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import store from "../store/index";
+const url = {
+    baseUrl: "",
+    shortCutUrl: "",
+};
+const errorMessage = ref();
+function generateUrl(event) {
+    event.preventDefault();
+    store
+        .dispatch("generateUrl", url)
+        .then((data) => {})
+        .catch((error) => {
+            errorMessage.value = error.response.data.error;
+        });
+}
+</script>
