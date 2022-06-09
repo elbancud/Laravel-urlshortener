@@ -2,5 +2,5 @@
 namespace App\Interfaces;
 
 interface UrlInterface {
-    public function saveUrl($modelName);
+    public function saveUrl();
 }

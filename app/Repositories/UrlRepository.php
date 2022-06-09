@@ -3,17 +3,16 @@
 namespace App\Repository\UrlRepository;
 
 use App\Interfaces\UrlInterface;
-use Illuminate\Database\Model;
 use App\Http\Requests\UrlRequest;
-
+use App\Http\Model\UrlContainer;
 class UrlRepository implements UrlInterface {
-    protected $model;
-    public function __construct(Model $model) {
-        $this->model = $model;
+    protected $urlContianer;
+    public function __construct(UrlContainer $urlContainer) {
+        $this->urlContianer = $urlContianer;
     }
 
-    public function saveUrl(UrlRequest $request) {
-        $generatedUrl = $this->model::create($request -> validate());
-        return response(generatedUrl);
+    public function saveUrl(UrlContainer $urlContainer, UrlRequest $request){
+        $generatedUrl = $this -> urlContianer -> create($request -> validate());
+        return $generatedUrl;
     }
 } 
