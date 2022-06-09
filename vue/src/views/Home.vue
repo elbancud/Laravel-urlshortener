@@ -66,7 +66,9 @@ function generateUrl(event) {
     event.preventDefault();
     store
         .dispatch("generateUrl", url)
-        .then((data) => {})
+        .then((data) => {
+            console.log(data);
+        })
         .catch((error) => {
             errorMessage.value = error.response.data.error;
         });

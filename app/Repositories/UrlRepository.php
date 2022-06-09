@@ -1,18 +1,22 @@
 <?php
 
-namespace App\Repository\UrlRepository;
+namespace App\Repositories;
 
 use App\Interfaces\UrlInterface;
 use App\Http\Requests\UrlRequest;
-use App\Http\Model\UrlContainer;
+use App\Models\UrlContainer;
+
 class UrlRepository implements UrlInterface {
     protected $urlContianer;
-    public function __construct(UrlContainer $urlContainer) {
+    protected $requestContainer;
+
+    public function __construct(UrlContainer $urlContainer, UrlRequest $request) {
         $this->urlContianer = $urlContianer;
+        $this->requestContainer = $request;
     }
 
-    public function saveUrl(UrlContainer $urlContainer, UrlRequest $request){
-        $generatedUrl = $this -> urlContianer -> create($request -> validate());
+    public function saveUrl(){
+        $generatedUrl = $this -> urlContianer -> create($requestContainer -> validate());
         return $generatedUrl;
     }
 } 

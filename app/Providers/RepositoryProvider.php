@@ -3,20 +3,22 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
-class AppServiceProvider extends ServiceProvider
+use App\Interfaces\UrlInterface;
+use App\Repositories\UrlRepository;
+class RepositoryProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
-     */
+     */ 
     public function register()
     {
+        $this->app->bind(UrlInterface::class,UrlRepository::class);
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */

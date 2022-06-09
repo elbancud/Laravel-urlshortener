@@ -10,7 +10,7 @@ class UrlContainer extends Model
     protected $fillable = [
         'base_url',
         'shortcut_url',
-
+        
     ];
     use HasFactory;
 }
