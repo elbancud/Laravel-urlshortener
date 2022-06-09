@@ -14,6 +14,7 @@ const store = createStore({
             return axiosClient
                 .post("/api", url)
                 .then(({ data }) => {
+                    commit("setUrl", data);
                     return data;
                 })
                 .catch((error) => {
@@ -21,6 +22,10 @@ const store = createStore({
                 });
         },
     },
-    mutations: {},
+    mutations: {
+        setUrl: (state, urlData) => {
+            state.url.data = urlData;
+        },
+    },
 });
 export default store;
