@@ -16,8 +16,10 @@ class UrlRepository implements UrlInterface {
     }
 
     public function saveUrl(){
-        $generatedUrl = $this -> urlContianer -> create($requestContainer -> validate());
+        // $generatedUrl = $this -> urlContianer -> create($requestContainer -> validate());
        
-        return 'hello';
+        return response([
+            'data' => 'hello'
+        ]);
     }
 } 
