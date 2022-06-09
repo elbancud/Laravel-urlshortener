@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Interfaces\UrlInterface;
 use App\Repositories\UrlRepository;
+
 class RepositoryProvider extends ServiceProvider
 {
     /**
