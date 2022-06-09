@@ -13,6 +13,7 @@ class UrlRepository implements UrlInterface {
     }
 
     public function saveUrl(UrlRequest $request) {
-        $this->model::create($request -> validate());
+        $generatedUrl = $this->model::create($request -> validate());
+        return response(generatedUrl);
     }
 } 
