@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\UrlController;
 class SaveUrl extends Controller
 {
     /**
@@ -14,12 +14,7 @@ class SaveUrl extends Controller
      */
     public function __invoke(Request $request)
     {
-        $url = $request -> validate(
-            [   
-                $baseUrl => "required | url | string",
-                $shortCutUrl => "required | url | url_container:unique, ",
-            ]
-        );
+    
 
     }
 }

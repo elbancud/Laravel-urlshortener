@@ -4,6 +4,7 @@ namespace App\Repository\UrlRepository;
 
 use App\Interfaces\UrlInterface;
 use Illuminate\Database\Model;
+use App\Http\Requests\UrlRequest;
 
 class UrlRepository implements UrlInterface {
     protected $model;
@@ -11,7 +12,7 @@ class UrlRepository implements UrlInterface {
         $this->model = $model;
     }
 
-    public function saveUrl() {
-
+    public function saveUrl(UrlRequest $request) {
+        $this->model::create($request -> validate());
     }
 } 

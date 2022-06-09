@@ -25,7 +25,7 @@ class UrlRequest extends FormRequest
     {
         return [
             $baseUrl => "required | url | string",
-            $shortCutUrl => "required | url | url_container:unique, ",
+            $shortCutUrl => "required | url | unique:url_container,shortCutUrl",
         ];
     }
 }
