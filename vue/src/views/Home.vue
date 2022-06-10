@@ -10,7 +10,8 @@
                     Url
                 </h2>
             </div>
-            <form class="mt-8 space-y-6" @submit="shortenUrl">
+            <form class="mt-8 space-y-6" @submit="shortenUrl" method="post">
+                <!-- @method('post'); -->
                 <div class="rounded-md shadow-sm space-x-5 flex">
                     <div>
                         <label for="baseUrl" class="sr-only">Base Url</label>
@@ -68,6 +69,7 @@ const errorMessage = ref();
 
 function shortenUrl(event) {
     event.preventDefault();
+    console.log(url);
     store
         .dispatch("generateUrl", url)
         .then((data) => {

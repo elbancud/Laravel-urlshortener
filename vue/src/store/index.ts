@@ -10,9 +10,10 @@ const store = createStore({
     // setter: {},
     modules: {},
     actions: {
-        async generateUrl({ commit }, url) {
-            return await axiosClient
-                .post("/main", url)
+        generateUrl({ commit }, urlParam) {
+            console.log(urlParam);
+            return axiosClient
+                .post("/main", urlParam)
                 .then(({ data }) => {
                     commit("setUrl", data);
                     return data;

@@ -23,6 +23,7 @@ class SaveUrl extends Controller
         // $this->request = $request;
     }
     public function __invoke(UrlRequest $request) {   
+        // dd($request -> all());
         $generatedUrl = $this -> urlInterface -> saveUrl($request -> validated());
         return $generatedUrl;
     }

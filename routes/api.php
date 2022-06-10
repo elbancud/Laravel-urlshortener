@@ -14,7 +14,7 @@ use App\Http\Controllers\SaveUrl;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->group(function () {
     // return $request->user();
 });
 Route::post('/main', SaveUrl::class);
