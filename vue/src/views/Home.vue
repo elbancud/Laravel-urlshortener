@@ -10,31 +10,32 @@
                     Url
                 </h2>
             </div>
-            <form class="mt-8 space-y-6" @submit="generateUrl">
-                <input type="hidden" name="remember" value="true" />
+            <form class="mt-8 space-y-6" @submit="shortenUrl">
                 <div class="rounded-md shadow-sm space-x-5 flex">
                     <div>
-                        <label for="base-url" class="sr-only">Base Url</label>
+                        <label for="baseUrl" class="sr-only">Base Url</label>
                         <input
                             v-model="url.baseUrl"
-                            id="base-url"
-                            name="base-url"
-                            type="url"
-                            autocomplete="base-url"
+                            id="baseUrl"
+                            name="baseUrl"
+                            type="text"
+                            autocomplete="baseUrl"
                             required="true"
                             class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="Base-url"
                         />
                     </div>
                     <div>
-                        <label for="short-cut" class="sr-only">Shortcut</label>
+                        <label for="shortCutUrl" class="sr-only"
+                            >Shortcut</label
+                        >
                         <input
                             v-model="url.shortCutUrl"
-                            id="short-cut"
-                            name="short-cut"
+                            id="shortCutUrl"
+                            name="shortCutUrl"
                             type="text"
-                            autocomplete="short-cut"
-                            required=""
+                            autocomplete="shortCutUrl"
+                            required="true"
                             class="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                             placeholder="short-cut"
                         />
@@ -57,17 +58,20 @@
 <script setup>
 import { ref } from "vue";
 import store from "../store/index";
+
 const url = {
     baseUrl: "",
     shortCutUrl: "",
 };
+
 const errorMessage = ref();
-function generateUrl(event) {
+
+function shortenUrl(event) {
     event.preventDefault();
     store
         .dispatch("generateUrl", url)
         .then((data) => {
-            console.log(data);
+            // console.log(data);
         })
         .catch((error) => {
             errorMessage.value = error.response.data.error;

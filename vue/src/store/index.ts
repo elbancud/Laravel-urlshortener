@@ -7,14 +7,13 @@ const store = createStore({
         },
     },
     getters: {},
-    setters: {},
+    // setter: {},
     modules: {},
     actions: {
         generateUrl({ commit }, url) {
             return axiosClient
-                .post("/api", url)
+                .post("/main", url)
                 .then(({ data }) => {
-                    console.log(data);
                     commit("setUrl", data);
                     return data;
                 })
