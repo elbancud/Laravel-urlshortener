@@ -71,7 +71,7 @@ function shortenUrl(event) {
     store
         .dispatch("generateUrl", url)
         .then((data) => {
-            // console.log(data);
+            console.log(data);
         })
         .catch((error) => {
             errorMessage.value = error.response.data.error;

@@ -15,7 +15,7 @@ class CreateUrlContainersTable extends Migration
     {
         Schema::create('url_containers', function (Blueprint $table) {
             $table -> id();
-            $table -> string('base_url') ;
+            $table -> nullable('base_url') ;
             $table -> string('shortcut_url');
             $table -> timestamps();
         });
