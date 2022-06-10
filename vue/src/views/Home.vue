@@ -69,7 +69,6 @@ const errorMessage = ref();
 
 function shortenUrl(event) {
     event.preventDefault();
-    console.log(url);
     store
         .dispatch("generateUrl", url)
         .then((data) => {

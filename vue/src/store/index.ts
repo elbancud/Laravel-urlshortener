@@ -11,7 +11,6 @@ const store = createStore({
     modules: {},
     actions: {
         generateUrl({ commit }, urlParam) {
-            console.log(urlParam);
             return axiosClient
                 .post("/main", urlParam)
                 .then(({ data }) => {
