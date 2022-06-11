@@ -21,6 +21,7 @@ class UrlRepository implements UrlInterface
     public function redirectToShortCutUrl(string $shortCutUrl)
     {
         // From the global model variable create
-        return $this->model->firstWhere('shortCutUrl', $shortCutUrl);
+
+        return $this->model->firstWhere('shortCutUrl', $shortCutUrl);;
     }
 }

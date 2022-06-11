@@ -15,7 +15,7 @@
                 </ul>
             </div>
 
-            <form class="mt-8 space-y-6" @submit="redirectPath" >
+            <form class="mt-8 space-y-6" @submit="redirectPath" method="POST">
                 <!-- @method('post'); -->
                 <div class="flex space-x-5 rounded-md shadow-sm">
                     <div>
@@ -48,19 +48,16 @@
     };
 
     const response = ref();
-    const router = useRouter();
     function redirectPath(event) {
             event.preventDefault();
             store
                 .dispatch("redirectPath", url)
-                .then(data => {
-                    // router.push(data.baseUrl)
-                    if (data.baseUrl) {
-                        window.location.href = data.baseUrl;
+                .then(url => {
+                    if (url.data) {
+                        window.location.href = url.data.baseUrl;
                     } else {
-                        response.value = "Oops! The short cut url does not exist"
+                        response.value = url.message;
                     }
-                    // console.log(data.baseUrl)
                 });
             
 

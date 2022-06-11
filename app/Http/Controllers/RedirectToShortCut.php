@@ -26,6 +26,16 @@ class RedirectToShortCut extends Controller
         //     'shortCutUrl' => 'required|exists:url_containers,shortCutUrl'
         // ]);
 
-        return $this->urlInterface->redirectToShortCutUrl($request->shortCutUrl);
+        $findUrl = $this->urlInterface->redirectToShortCutUrl($request->shortCutUrl);
+        if ($findUrl) {
+            return response()->json([
+                "message" => "Success! The given data was found.",
+                "data" => $findUrl,
+            ]);
+        }
+        return response()->json([
+            "message" => "Error! The given shortcut url does not exist.",
+            "data" => $findUrl,
+        ]);
     }
 }

@@ -27,6 +27,10 @@ class SaveUrl extends Controller
     {
         // dd($request -> all());
         // $generatedUrl =;
-        return $this->urlInterface->saveUrl($request->validated());
+        $generatedUrl = $this->urlInterface->saveUrl($request->validated());
+        return response()->json([
+            'message' => 'The given data is generated and saved.',
+            'data' => $generatedUrl,
+        ]);
     }
 }

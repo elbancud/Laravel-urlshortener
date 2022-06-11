@@ -8,9 +8,22 @@
             </div>
             <div>
                 <ul>
-                    <li class="w-full p-4 mb-2 text-white bg-red-800 rounded" v-for="(value, index) in response" v-bind:key="index">
-                        {{ value[0]}}
-                    </li>
+                    <div>
+                        <ul>
+                            <div v-if="errorMessage">
+                                <li class="w-full p-4 mb-2 text-white bg-red-800 rounded"
+                                    v-for="(value, index) in errorMessage" v-bind:key="index">
+                                    {{ value[0]}}
+                                </li>
+                            </div>
+
+                            <div v-if="successMessage">
+                                <li class="w-full p-4 mb-2 text-white bg-green-800 rounded">
+                                    {{successMessage}}
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
                 </ul>
             </div>
 
@@ -47,19 +60,31 @@
 <script setup>
 import { ref } from "vue";
 import store from "../store/index";
+import { useRouter } from "vue-router";
 
 const url = {
     baseUrl: "",
     shortCutUrl: "",
 };
 
-const response = ref();
+const router = useRouter();
+const errorMessage = ref();
+const successMessage = ref();
+
 function shortenUrl(event) {
     event.preventDefault();
     store
         .dispatch("generateUrl", url)
         .then((data) => {
-            response.value = data.errors;
+            if (data.errors) {
+                errorMessage.value = data.errors;
+            } else {
+                successMessage.value = data.message;
+                errorMessage.value = "";
+                setTimeout(() => {
+                    router.push('/shortcut');
+                }, 1000)
+            }
         })
     
 }
