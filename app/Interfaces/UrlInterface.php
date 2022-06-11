@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Interfaces;
 
-interface UrlInterface {
+interface UrlInterface
+{
     public function saveUrl(array $data);
+    public function redirectToShortCutUrl($shortCutUrl);
 }
