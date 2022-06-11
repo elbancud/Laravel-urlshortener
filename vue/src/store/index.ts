@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import { createStore } from "vuex";
 import axiosClient from "../axios/index";
 const store = createStore({
@@ -15,6 +16,16 @@ const store = createStore({
                 .post("/main", urlParam)
                 .then(({ data }) => {
                     commit("setUrl", data);
+                    return data;
+                })
+                .catch((error) => {
+                    return error.response.data;
+                });
+        },
+        async redirectPath({ commit }, shortCutUrl) {
+            return await axiosClient
+                .get("/shortCut", shortCutUrl)
+                .then(({ data }) => {
                     return data;
                 })
                 .catch((error) => {
