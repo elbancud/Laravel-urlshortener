@@ -17,4 +17,6 @@ use App\Http\Controllers\SaveUrl;
 Route::middleware('auth:sanctum')->group(function () {
     // return $request->user();
 });
-Route::post('/main', SaveUrl::class);
+
+Route::post('/main', SaveUrl::class)->name('main');
+Route::post('/shortCut', RedirectToShortCut::class)->name('shortcut.url');
