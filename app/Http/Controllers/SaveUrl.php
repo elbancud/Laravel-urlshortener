@@ -18,13 +18,15 @@ class SaveUrl extends Controller
      */
     protected $urlInterface, $request;
 
-    public function __construct(UrlInterface $urlInterface) {
+    public function __construct(UrlInterface $urlInterface)
+    {
         $this->urlInterface = $urlInterface;
         // $this->request = $request;
     }
-    public function __invoke(UrlRequest $request) {   
+    public function __invoke(UrlRequest $request)
+    {
         // dd($request -> all());
         // $generatedUrl =;
-        return $this -> urlInterface -> saveUrl($request -> validated());
+        return $this->urlInterface->saveUrl($request->validated());
     }
 }

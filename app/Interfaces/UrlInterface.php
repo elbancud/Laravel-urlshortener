@@ -5,5 +5,5 @@ namespace App\Interfaces;
 interface UrlInterface
 {
     public function saveUrl(array $data);
-    public function redirectToShortCutUrl($shortCutUrl);
+    public function redirectToShortCutUrl(string $shortCutUrl);
 }

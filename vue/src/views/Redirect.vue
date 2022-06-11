@@ -8,14 +8,14 @@
             </div>
             <div>
                 <ul>
-                    <li class="w-full p-4 mb-2 text-white bg-red-800 rounded" v-for="(value, index) in response"
-                        v-bind:key="index">
-                        {{ value[0] }}
+                    
+                    <li class="w-full p-4 mb-2 text-white bg-red-800 rounded" v-if="response">
+                        {{response}}
                     </li>
                 </ul>
             </div>
 
-            <form class="mt-8 space-y-6" @submit="redirectPath" method="post">
+            <form class="mt-8 space-y-6" @submit="redirectPath" >
                 <!-- @method('post'); -->
                 <div class="flex space-x-5 rounded-md shadow-sm">
                     <div>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { callWithErrorHandling, ref } from "vue";
     import store from "../store/index";
     import {useRouter} from "vue-router";
 
@@ -48,14 +48,21 @@
     };
 
     const response = ref();
+    const router = useRouter();
     function redirectPath(event) {
-        event.preventDefault();
-        store
-            .dispatch("generateUrl", url)
-            .then(data => {
-                router.push(data.url)
-            });
-        
+            event.preventDefault();
+            store
+                .dispatch("redirectPath", url)
+                .then(data => {
+                    // router.push(data.baseUrl)
+                    if (data.baseUrl) {
+                        window.location.href = data.baseUrl;
+                    } else {
+                        response.value = "Oops! The short cut url does not exist"
+                    }
+                    // console.log(data.baseUrl)
+                });
+            
 
-    }
+        }
 </script>

@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Interfaces\UrlInterface;
 use App\Models\UrlContainer;
-use PhpParser\Node\Stmt\TryCatch;
 
 class UrlRepository implements UrlInterface
 {
@@ -19,8 +18,9 @@ class UrlRepository implements UrlInterface
         // From the global model variable create
         return $this->model->create($data);
     }
-    public function redirectToShortCutUrl($shortCutUrl)
+    public function redirectToShortCutUrl(string $shortCutUrl)
     {
-        return $this->model->findOrFail($shortCutUrl);
+        // From the global model variable create
+        return $this->model->firstWhere('shortCutUrl', $shortCutUrl);
     }
 }

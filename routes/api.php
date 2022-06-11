@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SaveUrl;
+use App\Http\Controllers\RedirectToShortCut;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::post('/main', SaveUrl::class)->name('main');
-Route::post('/shortCut', RedirectToShortCut::class)->name('shortcut.url');
+Route::post('/shortcut', RedirectToShortCut::class)->name('shortcut');
