@@ -8,7 +8,7 @@
             </div>
             <div>
                 <ul>
-                    <li v-for="(value, propertyname,index ) in response" v-bind:key="index">
+                    <li class="w-full p-4 mb-2 text-white bg-red-800 rounded" v-for="(value, index) in response" v-bind:key="index">
                         {{ value[0]}}
                     </li>
                 </ul>

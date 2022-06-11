@@ -24,7 +24,7 @@ class UrlRequest extends FormRequest
     public function rules()
     {
         return [
-            'baseUrl' => "required | string",
+            'baseUrl' => "required | unique:url_containers,baseUrl",
             'shortCutUrl' => "required | unique:url_containers,shortCutUrl",
         ];
     }
