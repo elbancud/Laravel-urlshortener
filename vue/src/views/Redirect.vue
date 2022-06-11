@@ -15,7 +15,7 @@
                 </ul>
             </div>
 
-            <form class="mt-8 space-y-6" @submit="shortenUrl" method="post">
+            <form class="mt-8 space-y-6" @submit="redirectPath" method="post">
                 <!-- @method('post'); -->
                 <div class="flex space-x-5 rounded-md shadow-sm">
                     <div>
@@ -39,22 +39,23 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import store from "../store/index";
+    import { ref } from "vue";
+    import store from "../store/index";
+    import {useRouter} from "vue-router";
 
-const url = {
-    baseUrl: "",
-    shortCutUrl: "",
-};
+    const url = {
+        shortCutUrl: "",
+    };
 
-const response = ref();
-function shortenUrl(event) {
-    event.preventDefault();
-    store
-        .dispatch("generateUrl", url)
-        .then((data) => {
-            response.value = data.errors;
-        })
+    const response = ref();
+    function redirectPath(event) {
+        event.preventDefault();
+        store
+            .dispatch("generateUrl", url)
+            .then(data => {
+                router.push(data.url)
+            });
+        
 
-}
+    }
 </script>
