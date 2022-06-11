@@ -1,7 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Redirect from "../views/Redirect.vue";
 
-const routes = [{ path: "/main", component: Home }];
+const routes = [{ path: "/main", component: Home },
+    {
+        path: "/shortcut",
+        component: Redirect
+    },
+];
 
 const router = createRouter({
     history: createWebHistory(),
