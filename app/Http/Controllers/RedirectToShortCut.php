@@ -28,7 +28,7 @@ class RedirectToShortCut extends Controller
 
         $findUrl = $this->urlInterface->redirectToShortCutUrl($request->shortCutUrl);
         if ($findUrl) {
-            return response()->json([
+            return response()->json([   
                 "message" => "Success! The given data was found.",
                 "data" => $findUrl,
             ]);
