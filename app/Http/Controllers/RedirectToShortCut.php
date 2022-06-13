@@ -21,11 +21,6 @@ class RedirectToShortCut extends Controller
     }
     public function __invoke(Request $request)
     {
-        // return $request->all();
-        // $requestData = $request->validate([
-        //     'shortCutUrl' => 'required|exists:url_containers,shortCutUrl'
-        // ]);
-
         $findUrl = $this->urlInterface->redirectToShortCutUrl($request->shortCutUrl);
         if ($findUrl) {
             return response()->json([   
